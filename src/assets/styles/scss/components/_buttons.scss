@@ -1,0 +1,13 @@
+.button{
+  @include text-styles ($lg-font-size, $white-color);
+    padding: 15px 24px;
+    border: 1px solid #2196f3;
+    border-radius: 30px;
+    background-color: $dark-gray-color;
+    &--hovered:hover {
+      background-color:$blue-color;
+    }
+    &__icon{
+      color:$blue-color;
+    }
+}

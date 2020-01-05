@@ -1,0 +1,67 @@
+.row-section {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+//conversation-column__user
+.conversation-column{
+  background-color: $gray-color-conversation;
+}
+.conversation-column__user{
+  //background: url(../../../images/line.png) center bottom no-repeat;
+}
+.user {
+  padding: 20px;
+  &__name {
+    @include text-styles($xl-font-size, $white-color);
+    padding: 10px 10px 40px;
+    font-weight: 700;
+  }
+  &__mess-date {
+    @include text-styles($sm-font-size, $blue-color);
+  }
+  &__message {
+    padding: 30px 0px;
+    @include text-styles($md-font-size, $lighter-gray-color);
+  }
+}
+
+// dialog-column
+.dialog-column{
+  background-color: $dark-gray-color ;
+  &__my-message{
+    padding: 10px;
+  }
+}
+.my-message {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  &__img{
+    padding: 15px;
+  }
+  &__time {
+    @include text-styles($sm-font-size, $lighter-gray-color);
+    text-align: right;
+    padding: 10px;
+  }
+  &__cloud{
+    @include text-styles($md-font-size, $white-color);
+    padding: 10px;
+    background-color:$blue-color;
+    border-radius: 10px 10px 0px 10px;
+  }
+}
+.dialog-column{
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.form-block__textarea{
+  margin: 20px;
+  padding: 7px;
+  border-radius: 10px;
+  border: 1px solid rgba(156, 161, 178, 0.3);
+  background-color: $light-gray-color;
+}
