@@ -333,10 +333,39 @@ textarea {
 .fa {
   color: #ffffff; }
 
+.row-mess-options {
+  display: flex;
+  flex-direction: row;
+  background-color: #2196f3; }
+
+.options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #2196f3;
+  margin: 30px 50px; }
+  .options__icon {
+    font-size: 18px;
+    color: #2b2d3c;
+    font-family: "Montserrat", sans-serif;
+    text-decoration: none;
+    font-weight: 400;
+    padding: 5px 10px; }
+
+.icon--hovered:hover {
+  color: #ffffff; }
+
+.fa-paper-plane, .fa-trash {
+  color: #2b2d3c;
+  padding: 10px; }
+
+.fa-inbox {
+  padding: 10px; }
+
 .row-section {
   display: flex;
   flex-direction: row;
-  height: 100vh; }
+  height: 90vh; }
 
 .conversation-column {
   background-color: #2b2d3c; }
@@ -367,7 +396,8 @@ textarea {
 .my-message {
   display: flex;
   flex-direction: row;
-  align-items: flex-end; }
+  align-items: flex-end;
+  justify-content: flex-end; }
   .my-message__img {
     padding: 15px; }
   .my-message__time {
@@ -389,6 +419,9 @@ textarea {
   flex-direction: column-reverse; }
 
 .form-block__textarea {
+  font-size: 16px;
+  color: #ffffff;
+  font-family: "Montserrat", sans-serif;
   margin: 20px;
   padding: 7px;
   border-radius: 10px;
@@ -403,10 +436,11 @@ textarea {
   .nav-column__icon {
     padding: 30px 20px; }
 
-.fa {
+.fa--color {
   color: #9ca1b2; }
-  .fa--hovered:hover {
-    color: #2196f3; }
+
+.fa--hovered:hover {
+  color: #2196f3; }
 
 .button {
   font-size: 18px;
