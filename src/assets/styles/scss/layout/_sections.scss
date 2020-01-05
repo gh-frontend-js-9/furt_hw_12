@@ -1,7 +1,39 @@
+.row-mess-options{
+  display: flex;
+  flex-direction: row;
+  background-color:$blue-color;
+}
+.options{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color:$blue-color;
+  margin: 30px 50px;
+  &__buttons{
+  }
+  &__icon{
+    @include text-styles($lg-font-size, $black-color);
+    text-decoration: none;
+    font-weight: 400;
+    padding :5px 10px;
+  }
+}
+.icon--hovered:hover{
+    color:$white-color;
+}
+.fa-paper-plane, .fa-trash{
+  color: $black-color;
+  padding: 10px;
+}
+.fa-inbox{
+  padding: 10px;
+}
+
+//row-section
 .row-section {
   display: flex;
   flex-direction: row;
-  height: 100vh;
+  height: 90vh;
 }
 
 //conversation-column__user
@@ -38,6 +70,7 @@
   display: flex;
   flex-direction: row;
   align-items: flex-end;
+  justify-content: flex-end;
   &__img{
     padding: 15px;
   }
@@ -59,9 +92,11 @@
 }
 
 .form-block__textarea{
+  @include text-styles($md-font-size, $white-color);
   margin: 20px;
   padding: 7px;
   border-radius: 10px;
   border: 1px solid rgba(156, 161, 178, 0.3);
   background-color: $light-gray-color;
 }
+

@@ -1,24 +1,51 @@
 let rowSection = document.getElementById('row-section');
 rowSection.classList.add('row-section');
 
+//rowOptions
+let rowMessOptions = document.getElementById('row-mess-options');
+rowMessOptions.classList.add('row-mess-options');
+let rowOptions = document.createElement('div');
+rowOptions.classList.add('options');
+
+let messOptions = document.createElement('div');
+messOptions.classList.add('options__buttons');
+
+function createInbox(faIconClass, nameButton){
+    let anchor = document.createElement('a');
+    anchor.classList.add('options__icon', 'icon--hovered');
+    anchor.href = '#';
+    anchor.innerHTML = nameButton;
+    let icon = anchor.appendChild(document.createElement('i'));
+    icon.classList.add('fa', faIconClass);
+    icon.setAttribute('aria-hidden', 'true');
+
+    return rowMessOptions.appendChild(rowOptions).appendChild(messOptions).appendChild(anchor).appendChild(icon);
+}
+createInbox ('fa-inbox' , 'Inbox (2)');
+createInbox ('fa-paper-plane', 'Sent');
+createInbox ('fa-trash', 'Trash');
+
+// navColumn
 let navColumn = document.createElement('div');
 navColumn.classList.add('nav-column');
 
-function createAnchorIconClassList (faIconClass){
+function createAnchorIconClass(faIconClass){
     let anchor = document.createElement('a');
     anchor.classList.add('nav-column__icon');
     anchor.href = '#';
     let icon = anchor.appendChild(document.createElement('i'));
-    icon.classList.add('fa', 'fa--hovered', faIconClass, 'fa-2x');
+    icon.classList.add('fa', 'fa--color', 'fa--hovered', faIconClass, 'fa-2x');
     icon.setAttribute('aria-hidden', 'true');
 
     return rowSection.appendChild(navColumn).appendChild(anchor).appendChild(icon);
 }
-createAnchorIconClassList ('fa-home');
-createAnchorIconClassList ('fa-bars');
-createAnchorIconClassList ('fa-line-chart');
-createAnchorIconClassList ('fa-envelope');
-createAnchorIconClassList ('fa-users');
+createAnchorIconClass ('fa-home');
+createAnchorIconClass ('fa-bars');
+createAnchorIconClass ('fa-line-chart');
+createAnchorIconClass ('fa-envelope');
+createAnchorIconClass ('fa-users');
+
+
 
 // conversation-column
 let conversationColumn = document.createElement('div');
@@ -70,22 +97,6 @@ createImgNameDateMessUser("./assets/images/dominic.png", 'Dominic Lynton', '2 Ap
 let dialogСolumn = document.createElement('div');
 dialogСolumn.classList.add('dialog-column');
 
-function formWriteMessage () {
-    let form = document.createElement('form');
-    form.classList.add('form-block', 'dialog-column__form-block');
-    form.method = 'GET';
-    form.name = 'messageForm';
-
-    let writeMessage = document.createElement('textarea');
-    writeMessage.classList.add('form-block__textarea');
-    writeMessage.placeholder = 'Write a wessage';
-    writeMessage.name = 'messageTextarea';
-    writeMessage.cols = 70;
-
-    return rowSection.appendChild(dialogСolumn).appendChild(form).appendChild(writeMessage);
-}
-formWriteMessage()
-
 function cloudMyMessage (){
     let myMessage = document.createElement('div');
     myMessage.classList.add('my-message','dialog-column__my-message');
@@ -125,7 +136,22 @@ function cloudMyMessage (){
 
     return rowSection.appendChild(dialogСolumn).appendChild(myMessage).appendChild(myMessageCloudImgContainer);
 }
+formWriteMessage()
 cloudMyMessage ()
+
+function formWriteMessage () {
+    let form = document.createElement('form');
+    form.classList.add('form-block', 'dialog-column__form-block');
+    form.method = 'GET';
+    form.name = 'messageForm';
+
+    let writeMessage = document.createElement('textarea');
+    writeMessage.classList.add('form-block__textarea');
+    writeMessage.placeholder = 'Write a wessage';
+    writeMessage.name = 'messageTextarea';
+    writeMessage.cols = 70;
+    return rowSection.appendChild(dialogСolumn).appendChild(form).appendChild(writeMessage);
+}
 
 function validateForm() {
     let empty = document.forms["messageForm"]["messageTextarea"].value;
@@ -133,3 +159,6 @@ function validateForm() {
         return false;
     }
 }
+
+
+
