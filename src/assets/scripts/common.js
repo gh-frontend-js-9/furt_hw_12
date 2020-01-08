@@ -1,29 +1,47 @@
+let body = document.getElementById('body');
+body.classList.add('body');
+
 let rowSection = document.getElementById('row-section');
 rowSection.classList.add('row-section');
 
 //rowOptions
 let rowMessOptions = document.getElementById('row-mess-options');
-rowMessOptions.classList.add('row-mess-options');
-let rowOptions = document.createElement('div');
-rowOptions.classList.add('options');
+rowMessOptions.classList.add('options','row-mess-options');
 
 let messOptions = document.createElement('div');
 messOptions.classList.add('options__buttons');
 
-function createInbox(faIconClass, nameButton){
+function createOptionsIcon(faIconClass, nameButton){
     let anchor = document.createElement('a');
     anchor.classList.add('options__icon', 'icon--hovered');
     anchor.href = '#';
     anchor.innerHTML = nameButton;
+
     let icon = anchor.appendChild(document.createElement('i'));
     icon.classList.add('fa', faIconClass);
     icon.setAttribute('aria-hidden', 'true');
 
-    return rowMessOptions.appendChild(rowOptions).appendChild(messOptions).appendChild(anchor).appendChild(icon);
+    return rowMessOptions.appendChild(messOptions).appendChild(anchor).appendChild(icon);
 }
-createInbox ('fa-inbox' , 'Inbox (2)');
-createInbox ('fa-paper-plane', 'Sent');
-createInbox ('fa-trash', 'Trash');
+createOptionsIcon ('fa-inbox' , 'Inbox (2)');
+createOptionsIcon ('fa-paper-plane', 'Sent');
+createOptionsIcon ('fa-trash', 'Trash');
+
+function createSelect () {
+    let optSelectBlock = document.createElement('div');
+    optSelectBlock.classList.add('options__select-block');
+
+    let optFilterMess = document.createElement('select');
+    optFilterMess.classList.add('options__filter-mess');
+    optFilterMess.name = 'filterMessages';
+    optFilterMess.size = '1';
+    optFilterMess.options[0] = new Option("Date", "Date")
+    optFilterMess.options[1] = new Option("Read", "Read");
+    optFilterMess.options[2] = new Option("Unread", "Unread");
+
+    return rowMessOptions.appendChild(optSelectBlock).appendChild(optFilterMess)
+}
+createSelect ()
 
 // navColumn
 let navColumn = document.createElement('div');
@@ -85,7 +103,7 @@ function createImgNameDateMessUser (imgSrc, name, date, messageText) {
     conversationUser.appendChild(userImgNameMessDateFragment)
     conversationUser.appendChild(userMessage)
 
-    return rowSection.appendChild(conversationColumn).appendChild(conversationUser).appendChild(userMessageInfoСontainer);
+    return rowSection.appendChild(conversationColumn).appendChild(userMessageInfoСontainer);
 }
 
 createImgNameDateMessUser("./assets/images/michelle.png", 'Michelle Stewart', 'Today, 5:32 PM','Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusm.');
@@ -134,7 +152,7 @@ function cloudMyMessage (){
     myMessage.appendChild(myMessageContainer)
     myMessage.appendChild(myMessageImg);
 
-    return rowSection.appendChild(dialogСolumn).appendChild(myMessage).appendChild(myMessageCloudImgContainer);
+    return rowSection.appendChild(dialogСolumn).appendChild(myMessageCloudImgContainer);
 }
 formWriteMessage()
 cloudMyMessage ()
@@ -147,9 +165,10 @@ function formWriteMessage () {
 
     let writeMessage = document.createElement('textarea');
     writeMessage.classList.add('form-block__textarea');
+    writeMessage.id ='textarea';
     writeMessage.placeholder = 'Write a wessage';
     writeMessage.name = 'messageTextarea';
-    writeMessage.cols = 70;
+    // writeMessage.cols = 70;
     return rowSection.appendChild(dialogСolumn).appendChild(form).appendChild(writeMessage);
 }
 
@@ -160,5 +179,45 @@ function validateForm() {
     }
 }
 
+// userDateColumn
+let userDateColumn = document.createElement('div');
+userDateColumn.classList.add('date','user-column-date');
+function createDateСhosenUser(userImgSrc, userName, userJobPosition, userAboutHim) {
+    let dateUserImg = document.createElement('img');
+    dateUserImg.classList.add('date__user-img');
+    dateUserImg.src = userImgSrc;
+    let dateUserName = document.createElement('p');
+    dateUserName.classList.add('date__user-name');
+    dateUserName.innerHTML = userName;
+    let dateUserJobPosition = document.createElement('p');
+    dateUserJobPosition.classList.add('date__user-job-position');
+    dateUserJobPosition.innerHTML = userJobPosition;
+    let dateUserAbout = document.createElement('p');
+    dateUserAbout.classList.add('date__user-about');
+    dateUserAbout.innerHTML = userAboutHim;
 
+    let dateContainer = document.createDocumentFragment();
+    dateContainer.appendChild(userDateColumn);
+    userDateColumn.appendChild(dateUserImg);
+    userDateColumn.appendChild(dateUserName);
+    userDateColumn.appendChild(dateUserJobPosition);
+    userDateColumn.appendChild(dateUserAbout);
 
+    return rowSection.appendChild(dateContainer)
+}
+createDateСhosenUser("./assets/images/lyall-2.png",'Lyall Roach', 'UX/UI Designer', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.');
+
+function createdateUserInfo (titleInfo, info) {
+    let dateUserTitleInfo = document.createElement('p');
+    dateUserTitleInfo.classList.add('date__user-title-info');
+    dateUserTitleInfo.innerHTML = titleInfo;
+    let dateUserInfo = document.createElement('p');
+    dateUserInfo.classList.add('date__user-info');
+    dateUserInfo.innerHTML = info;
+
+    return rowSection.appendChild(userDateColumn).appendChild(dateUserTitleInfo).appendChild(dateUserInfo)
+}
+createdateUserInfo('Email', 'Email')
+createdateUserInfo('Phone', '+48 500 400 300')
+createdateUserInfo('Adress', '65 Lorem St, Warsaw, PL')
+createdateUserInfo('Organization', 'Symu.co')

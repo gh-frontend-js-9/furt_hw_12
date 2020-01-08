@@ -1,21 +1,43 @@
+.body{
+  max-width: 1900px;
+  width: 100%;
+}
 .row-mess-options{
-  display: flex;
-  flex-direction: row;
   background-color:$blue-color;
 }
 .options{
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  background-color:$blue-color;
-  margin: 30px 50px;
+  align-items: center;
   &__buttons{
+    margin: 10px;
   }
   &__icon{
     @include text-styles($lg-font-size, $black-color);
     text-decoration: none;
     font-weight: 400;
-    padding :5px 10px;
+    margin: 20px;
+  }
+  &__select-block{
+    padding: 0px 20px;
+  }
+  &__filter-mess{
+    @include text-styles($md-font-size, $white-color);
+    background-color:$blue-color;
+    border: 1px solid $white-color;
+    border-radius: 25px;
+    padding: 5px 30px;
+    line-height: 10px;
+  }
+}
+@media (max-width: 600px) {
+  .options__icon{
+    margin: 0px;
+  }
+}
+@media (max-width: 490px) {
+  .options__select-block{
+    display: none;
   }
 }
 .icon--hovered:hover{
@@ -33,15 +55,17 @@
 .row-section {
   display: flex;
   flex-direction: row;
-  height: 90vh;
+  max-height: 100vh;
 }
 
 //conversation-column__user
 .conversation-column{
   background-color: $gray-color-conversation;
 }
-.conversation-column__user{
-  //background: url(../../../images/line.png) center bottom no-repeat;
+@media (max-width: 390px) {
+  .conversation-column{
+  display: none;
+  }
 }
 .user {
   padding: 20px;
@@ -58,9 +82,30 @@
     @include text-styles($md-font-size, $lighter-gray-color);
   }
 }
+@media (max-width: 930px) {
+  .user__img-name-date{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+@media (max-width: 930px) {
+  .user__message{
+    text-align: center;
+  }
+}
+@media (max-width: 500px) {
+  .user__name{
+    @include text-styles($sm-font-size, $white-color);
+    padding: 15px 5px 10px;
+  }
+}
 
 // dialog-column
 .dialog-column{
+  display: flex;
+  flex-direction: column-reverse;
   background-color: $dark-gray-color ;
   &__my-message{
     padding: 10px;
@@ -86,10 +131,6 @@
     border-radius: 10px 10px 0px 10px;
   }
 }
-.dialog-column{
-  display: flex;
-  flex-direction: column-reverse;
-}
 
 .form-block__textarea{
   @include text-styles($md-font-size, $white-color);
@@ -98,5 +139,54 @@
   border-radius: 10px;
   border: 1px solid rgba(156, 161, 178, 0.3);
   background-color: $light-gray-color;
+  width: 85%;
+}
+@media (max-width: 650px) {
+  .form-block__textarea{
+    width: 60%;
+  }
+}
+//user-column-date
+.user-column-date{
+  padding: 20px 30px;
+  background-color: $gray-color-conversation;
 }
 
+.date{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  &__user-img{
+    padding-top: 30px ;
+  }
+  &__user-name{
+    @include text-styles($xl-font-size, $white-color);
+    font-weight: 700;
+    padding: 45px 5px 10px 5px;
+  }
+  &__user-job-position{
+    @include text-styles($md-font-size, $lighter-gray-color);
+    padding: 5px 5px 25px;
+  }
+  &__user-about{
+    @include text-styles($sm-font-size, $lighter-gray-color);
+    padding: 5px 5px 35px;
+    letter-spacing: 0.42px;
+    line-height: 28px;
+  }
+  &__user-title-info{
+    @include text-styles($sm-font-size, $lighter-gray-color);
+  padding: 15px 5px 10px;
+  }
+  &__user-info{
+    @include text-styles($md-font-size, $white-color);
+    padding: 10px 5px;
+  }
+}
+
+@media (max-width: 600px) {
+  .date{
+    display: none;
+  }
+}

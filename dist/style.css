@@ -315,9 +315,9 @@ textarea {
   resize: vertical; }
 
 .header-section {
+  height: 10%;
   display: flex;
   flex-direction: row;
-  max-width: 100%;
   justify-content: space-between;
   align-items: center;
   background-color: #2f3242;
@@ -333,24 +333,45 @@ textarea {
 .fa {
   color: #ffffff; }
 
+.body {
+  max-width: 1900px;
+  width: 100%; }
+
 .row-mess-options {
-  display: flex;
-  flex-direction: row;
   background-color: #2196f3; }
 
 .options {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  background-color: #2196f3;
-  margin: 30px 50px; }
+  align-items: center; }
+  .options__buttons {
+    margin: 10px; }
   .options__icon {
     font-size: 18px;
     color: #2b2d3c;
     font-family: "Montserrat", sans-serif;
     text-decoration: none;
     font-weight: 400;
-    padding: 5px 10px; }
+    margin: 20px; }
+  .options__select-block {
+    padding: 0px 20px; }
+  .options__filter-mess {
+    font-size: 16px;
+    color: #ffffff;
+    font-family: "Montserrat", sans-serif;
+    background-color: #2196f3;
+    border: 1px solid #ffffff;
+    border-radius: 25px;
+    padding: 5px 30px;
+    line-height: 10px; }
+
+@media (max-width: 600px) {
+  .options__icon {
+    margin: 0px; } }
+
+@media (max-width: 490px) {
+  .options__select-block {
+    display: none; } }
 
 .icon--hovered:hover {
   color: #ffffff; }
@@ -365,10 +386,14 @@ textarea {
 .row-section {
   display: flex;
   flex-direction: row;
-  height: 90vh; }
+  max-height: 100vh; }
 
 .conversation-column {
   background-color: #2b2d3c; }
+
+@media (max-width: 390px) {
+  .conversation-column {
+    display: none; } }
 
 .user {
   padding: 20px; }
@@ -388,7 +413,27 @@ textarea {
     color: #9ca1b2;
     font-family: "Montserrat", sans-serif; }
 
+@media (max-width: 930px) {
+  .user__img-name-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; } }
+
+@media (max-width: 930px) {
+  .user__message {
+    text-align: center; } }
+
+@media (max-width: 500px) {
+  .user__name {
+    font-size: 14px;
+    color: #ffffff;
+    font-family: "Montserrat", sans-serif;
+    padding: 15px 5px 10px; } }
+
 .dialog-column {
+  display: flex;
+  flex-direction: column-reverse;
   background-color: #2f3242; }
   .dialog-column__my-message {
     padding: 10px; }
@@ -414,10 +459,6 @@ textarea {
     background-color: #2196f3;
     border-radius: 10px 10px 0px 10px; }
 
-.dialog-column {
-  display: flex;
-  flex-direction: column-reverse; }
-
 .form-block__textarea {
   font-size: 16px;
   color: #ffffff;
@@ -426,21 +467,87 @@ textarea {
   padding: 7px;
   border-radius: 10px;
   border: 1px solid rgba(156, 161, 178, 0.3);
-  background-color: #404359; }
+  background-color: #404359;
+  width: 85%; }
+
+@media (max-width: 650px) {
+  .form-block__textarea {
+    width: 60%; } }
+
+.user-column-date {
+  padding: 20px 30px;
+  background-color: #2b2d3c; }
+
+.date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center; }
+  .date__user-img {
+    padding-top: 30px; }
+  .date__user-name {
+    font-size: 22px;
+    color: #ffffff;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    padding: 45px 5px 10px 5px; }
+  .date__user-job-position {
+    font-size: 16px;
+    color: #9ca1b2;
+    font-family: "Montserrat", sans-serif;
+    padding: 5px 5px 25px; }
+  .date__user-about {
+    font-size: 14px;
+    color: #9ca1b2;
+    font-family: "Montserrat", sans-serif;
+    padding: 5px 5px 35px;
+    letter-spacing: 0.42px;
+    line-height: 28px; }
+  .date__user-title-info {
+    font-size: 14px;
+    color: #9ca1b2;
+    font-family: "Montserrat", sans-serif;
+    padding: 15px 5px 10px; }
+  .date__user-info {
+    font-size: 16px;
+    color: #ffffff;
+    font-family: "Montserrat", sans-serif;
+    padding: 10px 5px; }
+
+@media (max-width: 600px) {
+  .date {
+    display: none; } }
 
 .nav-column {
+  max-height: calc(100vh - $headerHeight);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   background-color: #2f3242; }
   .nav-column__icon {
-    padding: 30px 20px; }
+    margin: 30px 20px; }
 
 .fa--color {
   color: #9ca1b2; }
 
 .fa--hovered:hover {
   color: #2196f3; }
+
+@media (max-width: 490px) {
+  .nav-bar__list:last-child {
+    display: none; } }
+
+@media (max-width: 435px) {
+  .nav-bar__list:nth-child(3) {
+    display: none; } }
+
+@media (max-width: 340px) {
+  .nav-bar__list:nth-child(2) {
+    display: none; } }
+
+@media (max-width: 287px) {
+  .nav-bar__list:nth-child(1) {
+    display: none; } }
 
 .button {
   font-size: 18px;
