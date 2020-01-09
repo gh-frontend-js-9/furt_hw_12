@@ -168,8 +168,14 @@ function formWriteMessage () {
     writeMessage.id ='textarea';
     writeMessage.placeholder = 'Write a wessage';
     writeMessage.name = 'messageTextarea';
-    // writeMessage.cols = 70;
-    return rowSection.appendChild(dialogСolumn).appendChild(form).appendChild(writeMessage);
+
+    let sendMessageButton = document.createElement('button');
+    sendMessageButton.classList.add('button','button--hovered', 'form-block__button');
+    sendMessageButton.innerHTML = 'Send';
+
+
+    rowSection.appendChild(dialogСolumn).appendChild(form).appendChild(writeMessage);
+    return form.appendChild(sendMessageButton);
 }
 
 function validateForm() {

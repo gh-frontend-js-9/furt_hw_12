@@ -335,7 +335,8 @@ textarea {
 
 .body {
   max-width: 1900px;
-  width: 100%; }
+  width: 100%;
+  max-height: 100%; }
 
 .row-mess-options {
   background-color: #2196f3; }
@@ -385,8 +386,7 @@ textarea {
 
 .row-section {
   display: flex;
-  flex-direction: row;
-  max-height: 100vh; }
+  flex-direction: row; }
 
 .conversation-column {
   background-color: #2b2d3c; }
@@ -437,6 +437,9 @@ textarea {
   background-color: #2f3242; }
   .dialog-column__my-message {
     padding: 10px; }
+  .dialog-column__form-block {
+    display: flex;
+    align-items: center; }
 
 .my-message {
   display: flex;
@@ -473,6 +476,9 @@ textarea {
 @media (max-width: 650px) {
   .form-block__textarea {
     width: 60%; } }
+
+.form-block__button {
+  margin-right: 5px; }
 
 .user-column-date {
   padding: 20px 30px;
@@ -553,7 +559,6 @@ textarea {
   font-size: 18px;
   color: #ffffff;
   font-family: "Montserrat", sans-serif;
-  padding: 15px 24px;
   border: 1px solid #2196f3;
   border-radius: 30px;
   background-color: #2f3242; }
@@ -561,3 +566,9 @@ textarea {
     background-color: #2196f3; }
   .button__icon {
     color: #2196f3; }
+
+.nav-bar__button {
+  padding: 15px 24px; }
+
+.form-block__button {
+  padding: 10px 14px; }

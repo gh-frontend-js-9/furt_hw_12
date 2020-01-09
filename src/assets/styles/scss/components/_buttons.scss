@@ -1,6 +1,5 @@
 .button{
   @include text-styles ($lg-font-size, $white-color);
-    padding: 15px 24px;
     border: 1px solid #2196f3;
     border-radius: 30px;
     background-color: $dark-gray-color;
@@ -10,4 +9,10 @@
     &__icon{
       color:$blue-color;
     }
+}
+.nav-bar__button{
+  padding: 15px 24px;
+}
+.form-block__button{
+  padding: 10px 14px;
 }
