@@ -63,8 +63,6 @@ createAnchorIconClass ('fa-line-chart');
 createAnchorIconClass ('fa-envelope');
 createAnchorIconClass ('fa-users');
 
-
-
 // conversation-column
 let conversationColumn = document.createElement('div');
 conversationColumn.classList.add('conversation-column');
@@ -114,8 +112,10 @@ createImgNameDateMessUser("./assets/images/dominic.png", 'Dominic Lynton', '2 Ap
 // dialog-column
 let dialogСolumn = document.createElement('div');
 dialogСolumn.classList.add('dialog-column');
+let dialogColumnBlock = document.createElement('div');
+dialogColumnBlock.classList.add('dialog-column__block');
 
-function cloudMyMessage (){
+export function cloudMyMessage (message){
     let myMessage = document.createElement('div');
     myMessage.classList.add('my-message','dialog-column__my-message');
 
@@ -123,8 +123,7 @@ function cloudMyMessage (){
     myMessageContainer.classList.add('my-message__container');
     let myMessageCloud = document.createElement('p');
     myMessageCloud.classList.add('my-message__cloud');
-    myMessageCloud.innerHTML = "Hello!";
-
+    myMessageCloud.innerHTML = message;
     let myMessageSendTime = document.createElement('p');
     myMessageSendTime.classList.add('my-message__time');
     let date = new Date();
@@ -152,16 +151,18 @@ function cloudMyMessage (){
     myMessage.appendChild(myMessageContainer)
     myMessage.appendChild(myMessageImg);
 
-    return rowSection.appendChild(dialogСolumn).appendChild(myMessageCloudImgContainer);
+     return rowSection.appendChild(dialogСolumn).appendChild(dialogColumnBlock).appendChild(myMessageCloudImgContainer);
 }
 formWriteMessage()
-cloudMyMessage ()
+// cloudMyMessage
 
 function formWriteMessage () {
     let form = document.createElement('form');
     form.classList.add('form-block', 'dialog-column__form-block');
     form.method = 'GET';
     form.name = 'messageForm';
+    form.action = '#';
+    form.setAttribute('onsubmit', "return validateForm()")
 
     let writeMessage = document.createElement('textarea');
     writeMessage.classList.add('form-block__textarea');
@@ -172,17 +173,23 @@ function formWriteMessage () {
     let sendMessageButton = document.createElement('button');
     sendMessageButton.classList.add('button','button--hovered', 'form-block__button');
     sendMessageButton.innerHTML = 'Send';
-
+    sendMessageButton.type = 'submit';
+    sendMessageButton.id = 'submit';
+    sendMessageButton.name = 'submit';
+    sendMessageButton.value = 'submit';
 
     rowSection.appendChild(dialogСolumn).appendChild(form).appendChild(writeMessage);
     return form.appendChild(sendMessageButton);
 }
 
 function validateForm() {
-    let empty = document.forms["messageForm"]["messageTextarea"].value;
-    if (empty == "") {
-        return false;
+    let valid = true;
+    let  empty = document.forms["messageForm"]["messageTextarea"].value;
+    if (document.messageForm.messageTextarea.value == '') {
+        alert(" field must be filled out");
+        valid = false;
     }
+        return valid ;
 }
 
 // userDateColumn

@@ -104,8 +104,11 @@
 
 // dialog-column
 .dialog-column{
+  width: 50%;
   display: flex;
   flex-direction: column-reverse;
+  max-height: 900px;
+  overflow-y: scroll;
   background-color: $dark-gray-color ;
   &__my-message{
     padding: 10px;
@@ -163,6 +166,7 @@
 .date{
   display: flex;
   flex-direction: column;
+  max-width: 300px;
   align-items: center;
   text-align: center;
   &__user-img{
@@ -193,7 +197,7 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .date{
     display: none;
   }

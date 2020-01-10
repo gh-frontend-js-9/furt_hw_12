@@ -4,7 +4,8 @@ function sendRequestForCurrent() {
         fetch('http://localhost:3000/api/users/current', {
             method: 'GET',
             headers: {
-                'x-access-token': localStorage.token
+                'x-access-token': localStorage.token,
+                'Content-Type': 'application/json'
             }
         }).then((res) => {
             return res.json();
@@ -39,7 +40,8 @@ async function SendDateFormLogIn(e) {
             method: 'POST',
             body: JSON.stringify(user),
             headers: {
-                'Content-Type': 'application/json;charset=utf-8'
+                'Authorization': localStorage.token,
+                'Content-Type': 'application/json'
             }
         });
         let result = await response.json();
@@ -55,5 +57,5 @@ async function SendDateFormLogIn(e) {
         console.error('Error:', error);
     }
 }
-// console.log(SendDateFormLogIn(e))
+
 //     123455678

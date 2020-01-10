@@ -432,8 +432,11 @@ textarea {
     padding: 15px 5px 10px; } }
 
 .dialog-column {
+  width: 50%;
   display: flex;
   flex-direction: column-reverse;
+  max-height: 900px;
+  overflow-y: scroll;
   background-color: #2f3242; }
   .dialog-column__my-message {
     padding: 10px; }
@@ -487,6 +490,7 @@ textarea {
 .date {
   display: flex;
   flex-direction: column;
+  max-width: 300px;
   align-items: center;
   text-align: center; }
   .date__user-img {
@@ -520,12 +524,11 @@ textarea {
     font-family: "Montserrat", sans-serif;
     padding: 10px 5px; }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .date {
     display: none; } }
 
 .nav-column {
-  max-height: calc(100vh - $headerHeight);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
