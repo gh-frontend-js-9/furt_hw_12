@@ -1,5 +1,5 @@
-async function startThread(e) {
-    e.preventDefault();
+ async function startThread() {
+    // e.preventDefault();
     const url = 'http://localhost:3000/api/threads';
     let dataRaw = {
         "user": {
@@ -30,6 +30,13 @@ async function startThread(e) {
     }
 }
 
+
+
+// function setOnClickHandlerByElemId(elemId, callback) {
+//     let threadClick = document.getElementById(elemId);
+//     threadClick.addEventListener('click', callback)
+// }
+// setOnClickHandlerByElemId('userThread', startThread)
 
 
 

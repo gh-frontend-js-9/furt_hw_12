@@ -67,7 +67,7 @@ createAnchorIconClass ('fa-users');
 let conversationColumn = document.createElement('div');
 conversationColumn.classList.add('conversation-column');
 
-function createImgNameDateMessUser (imgSrc, name, date, messageText) {
+export function createImgNameDateMessUser (imgSrc, name, date, messageText) {
 
     let conversationUser = document.createElement('div');
     conversationUser.classList.add('user', 'conversation-column__user');
@@ -104,10 +104,10 @@ function createImgNameDateMessUser (imgSrc, name, date, messageText) {
     return rowSection.appendChild(conversationColumn).appendChild(userMessageInfoСontainer);
 }
 
-createImgNameDateMessUser("./assets/images/michelle.png", 'Michelle Stewart', 'Today, 5:32 PM','Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusm.');
-createImgNameDateMessUser("./assets/images/jolene.png", 'Jolene Slater', '10 April','Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusm.');
-createImgNameDateMessUser("./assets/images/lyall.png", 'Lyall Roach', '8 April','Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusm.');
-createImgNameDateMessUser("./assets/images/dominic.png", 'Dominic Lynton', '2 April','Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusm.');
+// createImgNameDateMessUser("./assets/images/michelle.png", 'Michelle Stewart', 'Today, 5:32 PM','Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusm.');
+// createImgNameDateMessUser("./assets/images/jolene.png", 'Jolene Slater', '10 April','Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusm.');
+// createImgNameDateMessUser("./assets/images/lyall.png", 'Lyall Roach', '8 April','Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusm.');
+// createImgNameDateMessUser("./assets/images/dominic.png", 'Dominic Lynton', '2 April','Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusm.');
 
 // dialog-column
 let dialogСolumn = document.createElement('div');
@@ -162,7 +162,7 @@ function formWriteMessage () {
     form.method = 'GET';
     form.name = 'messageForm';
     form.action = '#';
-    form.setAttribute('onsubmit', "return validateForm()")
+    // form.setAttribute('onsubmit', "return validateForm()")
 
     let writeMessage = document.createElement('textarea');
     writeMessage.classList.add('form-block__textarea');

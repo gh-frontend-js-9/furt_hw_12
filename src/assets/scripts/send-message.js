@@ -41,3 +41,5 @@ function setOnClickByElemId(elemId, callback) {
 }
 setOnClickByElemId('submit', sendMessage)
 
+
+
