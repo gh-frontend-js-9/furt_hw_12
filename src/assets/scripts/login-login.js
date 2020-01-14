@@ -8,26 +8,31 @@ function sendRequestForCurrent() {
                 'Content-Type': 'application/json'
             }
         }).then((res) => {
+            console.log(res)
             return res.json();
-        }).then((user)=> {
+        }).then((user) => {
             document.getElementById('container').innerHTML = 'Hi, ' + user.name;
-        });
+        }).catch((error) =>{
+            return window.location.replace('sign-up.html')
+        })
         console.log(localStorage.token)
     } else {
         document.getElementById('container').innerHTML = 'Log in'
     }
 }
+
 sendRequestForCurrent();
 
 function setOnClickHandlerByElemId(elemId, callback) {
     let button = document.getElementById(elemId);
     button.addEventListener('click', SendDateFormLogIn)
 }
+
 setOnClickHandlerByElemId('submit', SendDateFormLogIn)
 
 async function SendDateFormLogIn(e) {
     e.preventDefault();
-    const url = 'http://localhost:3000/api/users/login';
+    let url = 'http://localhost:3000/api/users/login';
     let email = document.getElementById("email").value;
     let password = document.getElementById('password').value;
 
@@ -44,14 +49,17 @@ async function SendDateFormLogIn(e) {
                 'Content-Type': 'application/json'
             }
         });
+        console.log(localStorage.token);
+
         let result = await response.json();
         if (!response.ok) {
-            throw new Error(`No connection ${url}, status: ${response.status}`);
+            return window.location.replace('sign-up.html')
         } else {
-            alert('Successfully log in');
+            document.getElementById('container').innerHTML = 'Successfully log in!';
             let token = await response.headers.get('x-auth-token');
             localStorage.setItem('token', token);
             console.log(localStorage);
+            return window.location.replace('index.html')
         }
     } catch (error) {
         console.error('Error:', error);

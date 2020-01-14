@@ -1,6 +1,6 @@
 async function SendDateFormLogIn(e) {
     e.preventDefault();
-    const url = 'http://localhost:3000/api/users';
+    let url = 'http://localhost:3000/api/users';
     let email = document.getElementById("email").value;
     let password = document.getElementById('password').value;
     let name = document.getElementById('name').value;
