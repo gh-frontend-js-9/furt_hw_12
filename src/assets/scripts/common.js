@@ -153,16 +153,14 @@ export function cloudMyMessage (message){
 
      return rowSection.appendChild(dialogСolumn).appendChild(dialogColumnBlock).appendChild(myMessageCloudImgContainer);
 }
-formWriteMessage()
-// cloudMyMessage
 
+// cloudMyMessage
+let form = document.createElement('form');
+form.classList.add('form-block', 'dialog-column__form-block');
 function formWriteMessage () {
-    let form = document.createElement('form');
-    form.classList.add('form-block', 'dialog-column__form-block');
     form.method = 'GET';
     form.name = 'messageForm';
     form.action = '#';
-    // form.setAttribute('onsubmit', "return validateForm()")
 
     let writeMessage = document.createElement('textarea');
     writeMessage.classList.add('form-block__textarea');
@@ -170,27 +168,20 @@ function formWriteMessage () {
     writeMessage.placeholder = 'Write a wessage';
     writeMessage.name = 'messageTextarea';
 
+    return rowSection.appendChild(dialogСolumn).appendChild(form).appendChild(writeMessage);
+}
+formWriteMessage();
+
+function sendMessageButton() {
     let sendMessageButton = document.createElement('button');
     sendMessageButton.classList.add('button','button--hovered', 'form-block__button');
     sendMessageButton.innerHTML = 'Send';
     sendMessageButton.type = 'submit';
     sendMessageButton.id = 'submit';
     sendMessageButton.name = 'submit';
-    sendMessageButton.value = 'submit';
-
-    rowSection.appendChild(dialogСolumn).appendChild(form).appendChild(writeMessage);
     return form.appendChild(sendMessageButton);
 }
-
-function validateForm() {
-    let valid = true;
-    let  empty = document.forms["messageForm"]["messageTextarea"].value;
-    if (document.messageForm.messageTextarea.value == '') {
-        alert(" field must be filled out");
-        valid = false;
-    }
-        return valid ;
-}
+sendMessageButton();
 
 // userDateColumn
 let userDateColumn = document.createElement('div');

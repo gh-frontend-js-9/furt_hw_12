@@ -4,14 +4,16 @@ async function sendMessage(e) {
     let message = document.getElementById('textarea').value;
     e.preventDefault();
     let url = 'http://localhost:3000/api/threads/messages';
+    let idThread = localStorage.getItem('_id');
     let dataRaw = {
         "thread": {
-            "_id": "5e18780b0a7a824ce07bf0a1"
+            "_id": localStorage._id,
         },
         "message": {
             "body": message
         }
     }
+    console.log(dataRaw)
     console.log(message)
     try {
         const response = await fetch(url, {
@@ -25,11 +27,18 @@ async function sendMessage(e) {
         console.log(localStorage.token);
 
         let result = await response.json();
+        console.log(result)
         if (!response.ok) {
             throw new Error(`No connection ${url}, status: ${response.status}`);
         }
         let token = await response.headers.get('x-auth-token');
+        localStorage.setItem('token', token);
+
         cloudMyMessage(message);
+        let idThread = result.thread
+        localStorage.setItem('_id', idThread);
+        console.log(idThread)
+
     } catch (error) {
         console.error('Error:', error);
     }
