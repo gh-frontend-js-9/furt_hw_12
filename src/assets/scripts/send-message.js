@@ -14,7 +14,6 @@ async function sendMessage(e) {
         }
     }
     console.log(dataRaw)
-    console.log(message)
     try {
         const response = await fetch(url, {
             method: 'POST',
@@ -31,9 +30,6 @@ async function sendMessage(e) {
         if (!response.ok) {
             throw new Error(`No connection ${url}, status: ${response.status}`);
         }
-        let token = await response.headers.get('x-auth-token');
-        localStorage.setItem('token', token);
-
         cloudMyMessage(message);
         let idThread = result.thread
         localStorage.setItem('_id', idThread);
@@ -48,30 +44,32 @@ function setOnClickByElemId(elemId, callback) {
     let sendButton = document.getElementById(elemId);
     sendButton.addEventListener('click', callback);
 }
+
 setOnClickByElemId('submit', sendMessage)
 
 let disabledButton = document.getElementById("submit")
 disabledButton.disabled = true;
+
 function validateForm() {
-    const messageForm =  "messageForm";
+    const messageForm = "messageForm";
     const messageTextarea = "messageTextarea";
     let empty = document.forms[messageForm][messageTextarea].value;
     if (empty == '') {
         disabledButton.disabled = true;
-     }
-    else{
+    } else {
         disabledButton.removeAttribute('disabled')
     }
 }
+
 setOnClickByElemId('submit', validateForm);
 
 let writeMessage = document.getElementById('textarea');
-writeMessage.oninput = function(){
+writeMessage.oninput = function () {
     validateForm()
 }
 
-function cleanTextarea(){
+function cleanTextarea() {
     document.getElementById('textarea').value = "";
 }
-setOnClickByElemId('submit', cleanTextarea);
 
+setOnClickByElemId('submit', cleanTextarea);

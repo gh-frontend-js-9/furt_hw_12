@@ -6,12 +6,12 @@ rowSection.classList.add('row-section');
 
 //rowOptions
 let rowMessOptions = document.getElementById('row-mess-options');
-rowMessOptions.classList.add('options','row-mess-options');
+rowMessOptions.classList.add('options', 'row-mess-options');
 
 let messOptions = document.createElement('div');
 messOptions.classList.add('options__buttons');
 
-function createOptionsIcon(faIconClass, nameButton){
+function createOptionsIcon(faIconClass, nameButton) {
     let anchor = document.createElement('a');
     anchor.classList.add('options__icon', 'icon--hovered');
     anchor.href = '#';
@@ -23,11 +23,12 @@ function createOptionsIcon(faIconClass, nameButton){
 
     return rowMessOptions.appendChild(messOptions).appendChild(anchor).appendChild(icon);
 }
-createOptionsIcon ('fa-inbox' , 'Inbox (2)');
-createOptionsIcon ('fa-paper-plane', 'Sent');
-createOptionsIcon ('fa-trash', 'Trash');
 
-function createSelect () {
+createOptionsIcon('fa-inbox', 'Inbox (2)');
+createOptionsIcon('fa-paper-plane', 'Sent');
+createOptionsIcon('fa-trash', 'Trash');
+
+function createSelect() {
     let optSelectBlock = document.createElement('div');
     optSelectBlock.classList.add('options__select-block');
 
@@ -41,13 +42,14 @@ function createSelect () {
 
     return rowMessOptions.appendChild(optSelectBlock).appendChild(optFilterMess)
 }
-createSelect ()
+
+createSelect()
 
 // navColumn
 let navColumn = document.createElement('div');
 navColumn.classList.add('nav-column');
 
-function createAnchorIconClass(faIconClass){
+function createAnchorIconClass(faIconClass) {
     let anchor = document.createElement('a');
     anchor.classList.add('nav-column__icon');
     anchor.href = '#';
@@ -57,46 +59,50 @@ function createAnchorIconClass(faIconClass){
 
     return rowSection.appendChild(navColumn).appendChild(anchor).appendChild(icon);
 }
-createAnchorIconClass ('fa-home');
-createAnchorIconClass ('fa-bars');
-createAnchorIconClass ('fa-line-chart');
-createAnchorIconClass ('fa-envelope');
-createAnchorIconClass ('fa-users');
+
+createAnchorIconClass('fa-home');
+createAnchorIconClass('fa-bars');
+createAnchorIconClass('fa-line-chart');
+createAnchorIconClass('fa-envelope');
+createAnchorIconClass('fa-users');
 
 // conversation-column
 let conversationColumn = document.createElement('div');
 conversationColumn.classList.add('conversation-column');
 
-export function createImgNameDateMessUser (imgSrc, name, date, messageText) {
+export function createImgNameDateMessUser(imgSrc, name, date, messageText) {
 
     let conversationUser = document.createElement('div');
     conversationUser.classList.add('user', 'conversation-column__user');
-
     let userImgNameDate = document.createElement('div');
     userImgNameDate.classList.add('user__img-name-date');
 
     let userImg = document.createElement('img');
     userImg.src = imgSrc;
-
+    let anchorThread = document.createElement('a');
+    anchorThread.href = '#'
+    anchorThread.classList.add('user__anchor-thread')
+    anchorThread.id = ('userAnchorThread');
     let userName = document.createElement('span');
     userName.classList.add('user__name');
+    userName.id = ('userName')
     userName.innerHTML = name;
     let userMessDate = document.createElement('span');
     userMessDate.classList.add('user__mess-date');
     userMessDate.innerHTML = date;
 
     let userImgNameMessDateFragment = document.createDocumentFragment()
-    userImgNameMessDateFragment.appendChild(userImgNameDate);
+    userImgNameMessDateFragment.appendChild(userImgNameDate).appendChild(anchorThread);
 
-    userImgNameDate.appendChild(userImg);
-    userImgNameDate.appendChild(userName);
-    userImgNameDate.appendChild(userMessDate);
+    anchorThread.appendChild(userImg);
+    anchorThread.appendChild(userName);
+    anchorThread.appendChild(userMessDate);
 
     let userMessage = document.createElement('p');
     userMessage.classList.add('user__message');
     userMessage.innerHTML = messageText;
 
-    let userMessageInfoСontainer= document.createDocumentFragment()
+    let userMessageInfoСontainer = document.createDocumentFragment()
     userMessageInfoСontainer.appendChild(conversationUser);
     conversationUser.appendChild(userImgNameMessDateFragment)
     conversationUser.appendChild(userMessage)
@@ -104,20 +110,15 @@ export function createImgNameDateMessUser (imgSrc, name, date, messageText) {
     return rowSection.appendChild(conversationColumn).appendChild(userMessageInfoСontainer);
 }
 
-// createImgNameDateMessUser("./assets/images/michelle.png", 'Michelle Stewart', 'Today, 5:32 PM','Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusm.');
-// createImgNameDateMessUser("./assets/images/jolene.png", 'Jolene Slater', '10 April','Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusm.');
-// createImgNameDateMessUser("./assets/images/lyall.png", 'Lyall Roach', '8 April','Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusm.');
-// createImgNameDateMessUser("./assets/images/dominic.png", 'Dominic Lynton', '2 April','Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusm.');
-
 // dialog-column
 let dialogСolumn = document.createElement('div');
 dialogСolumn.classList.add('dialog-column');
 let dialogColumnBlock = document.createElement('div');
 dialogColumnBlock.classList.add('dialog-column__block');
 
-export function cloudMyMessage (message){
+export function cloudMyMessage(message) {
     let myMessage = document.createElement('div');
-    myMessage.classList.add('my-message','dialog-column__my-message');
+    myMessage.classList.add('my-message', 'dialog-column__my-message');
 
     let myMessageContainer = document.createElement('div');
     myMessageContainer.classList.add('my-message__container');
@@ -130,10 +131,10 @@ export function cloudMyMessage (message){
     let optionsDate = {
         month: 'long',
         year: 'numeric',
-        day: 'numeric' ,
-        hour:  'numeric',
-        hour12 : true,
-        minute : 'numeric'
+        day: 'numeric',
+        hour: 'numeric',
+        hour12: true,
+        minute: 'numeric'
     };
     myMessageSendTime.innerHTML = date.toLocaleString('en-US', optionsDate);
 
@@ -151,42 +152,46 @@ export function cloudMyMessage (message){
     myMessage.appendChild(myMessageContainer)
     myMessage.appendChild(myMessageImg);
 
-     return rowSection.appendChild(dialogСolumn).appendChild(dialogColumnBlock).appendChild(myMessageCloudImgContainer);
+    return rowSection.appendChild(dialogСolumn).appendChild(dialogColumnBlock).appendChild(myMessageCloudImgContainer);
 }
 
 // cloudMyMessage
 let form = document.createElement('form');
 form.classList.add('form-block', 'dialog-column__form-block');
-function formWriteMessage () {
+
+function formWriteMessage() {
     form.method = 'GET';
     form.name = 'messageForm';
     form.action = '#';
 
     let writeMessage = document.createElement('textarea');
     writeMessage.classList.add('form-block__textarea');
-    writeMessage.id ='textarea';
+    writeMessage.id = 'textarea';
     writeMessage.placeholder = 'Write a wessage';
     writeMessage.name = 'messageTextarea';
 
     return rowSection.appendChild(dialogСolumn).appendChild(form).appendChild(writeMessage);
 }
+
 formWriteMessage();
 
 function sendMessageButton() {
     let sendMessageButton = document.createElement('button');
-    sendMessageButton.classList.add('button','button--hovered', 'form-block__button');
+    sendMessageButton.classList.add('button', 'button--hovered', 'form-block__button');
     sendMessageButton.innerHTML = 'Send';
     sendMessageButton.type = 'submit';
     sendMessageButton.id = 'submit';
     sendMessageButton.name = 'submit';
     return form.appendChild(sendMessageButton);
 }
+
 sendMessageButton();
 
 // userDateColumn
 let userDateColumn = document.createElement('div');
-userDateColumn.classList.add('date','user-column-date');
-function createDateСhosenUser(userImgSrc, userName, userJobPosition, userAboutHim) {
+userDateColumn.classList.add('date', 'user-column-date');
+
+export function createDateСhosenUser(userImgSrc, userName, userJobPosition, userAboutHim) {
     let dateUserImg = document.createElement('img');
     dateUserImg.classList.add('date__user-img');
     dateUserImg.src = userImgSrc;
@@ -209,9 +214,8 @@ function createDateСhosenUser(userImgSrc, userName, userJobPosition, userAboutH
 
     return rowSection.appendChild(dateContainer)
 }
-createDateСhosenUser("./assets/images/lyall-2.png",'Lyall Roach', 'UX/UI Designer', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.');
 
-function createdateUserInfo (titleInfo, info) {
+export function createdateUserInfo(titleInfo, info) {
     let dateUserTitleInfo = document.createElement('p');
     dateUserTitleInfo.classList.add('date__user-title-info');
     dateUserTitleInfo.innerHTML = titleInfo;
@@ -221,7 +225,3 @@ function createdateUserInfo (titleInfo, info) {
 
     return rowSection.appendChild(userDateColumn).appendChild(dateUserTitleInfo).appendChild(dateUserInfo)
 }
-createdateUserInfo('Email', 'Email')
-createdateUserInfo('Phone', '+48 500 400 300')
-createdateUserInfo('Adress', '65 Lorem St, Warsaw, PL')
-createdateUserInfo('Organization', 'Symu.co')

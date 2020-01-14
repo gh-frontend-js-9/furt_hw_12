@@ -1,9 +1,10 @@
- async function startThread() {
+async function startThread() {
     // e.preventDefault();
-    const url = 'http://localhost:3000/api/threads';
+    let url = 'http://localhost:3000/api/threads';
+    let idUser = localStorage.getItem('_id');
     let dataRaw = {
         "user": {
-            "_id":"5e18780b0a7a824ce07bf0a1"
+            "_id": localStorage._id,
         }
     }
     try {
@@ -25,12 +26,14 @@
         let token = await response.headers.get('x-auth-token');
         localStorage.setItem('token', token);
         console.log(localStorage);
+
+        let idUser = result.user;
+        localStorage.setItem('_id', idUser);
+        console.log(idUser)
     } catch (error) {
         console.error('Error:', error);
     }
 }
-
-
 
 // function setOnClickHandlerByElemId(elemId, callback) {
 //     let threadClick = document.getElementById(elemId);
