@@ -1,11 +1,10 @@
 function sendRequestForCurrent() {
     let token = localStorage.getItem('token');
-    if (localStorage.getItem('token')) {
-        fetch('http://localhost:3000/api/users/current', {
+    if (token) {
+        fetch('https://geekhub-frontend-js-9.herokuapp.com/api/users/', {
             method: 'GET',
             headers: {
                 'x-access-token': localStorage.token,
-                'Content-Type': 'application/json'
             }
         }).then((res) => {
             console.log(res)
@@ -17,10 +16,9 @@ function sendRequestForCurrent() {
         })
         console.log(localStorage.token)
     } else {
-        document.getElementById('container').innerHTML = 'Log in'
+        document.getElementById('container').innerHTML = 'Login, please'
     }
 }
-
 sendRequestForCurrent();
 
 function setOnClickHandlerByElemId(elemId, callback) {
@@ -32,7 +30,7 @@ setOnClickHandlerByElemId('submit', SendDateFormLogIn)
 
 async function SendDateFormLogIn(e) {
     e.preventDefault();
-    let url = 'http://localhost:3000/api/users/login';
+    let url = 'https://geekhub-frontend-js-9.herokuapp.com/api/users/login';
     let email = document.getElementById("email").value;
     let password = document.getElementById('password').value;
 
@@ -45,25 +43,31 @@ async function SendDateFormLogIn(e) {
             method: 'POST',
             body: JSON.stringify(user),
             headers: {
-                'Authorization': localStorage.token,
                 'Content-Type': 'application/json'
             }
         });
-        console.log(localStorage.token);
-
         let result = await response.json();
+        console.log(localStorage.token);
         if (!response.ok) {
+            wrongPasswordMess(result)
             return window.location.replace('sign-up.html')
         } else {
-            document.getElementById('container').innerHTML = 'Successfully log in!';
-            let token = await response.headers.get('x-auth-token');
+            successfullyLogIn()
+            let token =  response.headers.get('X-Auth-Token');
             localStorage.setItem('token', token);
             console.log(localStorage);
-            return window.location.replace('index.html')
+            // return window.location.replace('index.html')
         }
     } catch (error) {
         console.error('Error:', error);
     }
 }
 
-//     123455678
+function successfullyLogIn() {
+    document.getElementById('container').innerHTML = 'Successfully log in!';
+}
+function wrongPasswordMess(result) {
+    if (result.message == 'Wrong password'){
+        document.getElementById('container').innerHTML = 'Wrong password';
+    }
+}

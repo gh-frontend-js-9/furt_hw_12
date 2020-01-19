@@ -1,3 +1,6 @@
+import {createDataAtr} from './retrieve-all-threads';
+import {getAllThreads} from './retrieve-all-threads';
+
 let body = document.getElementById('body');
 body.classList.add('body');
 
@@ -119,7 +122,7 @@ dialogColumnBlock.classList.add('dialog-column__block');
 export function cloudMyMessage(message) {
     let myMessage = document.createElement('div');
     myMessage.classList.add('my-message', 'dialog-column__my-message');
-
+    // myMessage.setAttribute('data-id-thread', idThread)
     let myMessageContainer = document.createElement('div');
     myMessageContainer.classList.add('my-message__container');
     let myMessageCloud = document.createElement('p');

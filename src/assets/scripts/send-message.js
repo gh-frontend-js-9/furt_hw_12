@@ -1,13 +1,15 @@
 import {cloudMyMessage} from './common.js';
 
-async function sendMessage(e) {
-    let message = document.getElementById('textarea').value;
+ async function sendMessage(e) {
     e.preventDefault();
-    let url = 'http://localhost:3000/api/threads/messages';
-    let idThread = localStorage.getItem('_id');
+    let message = document.getElementById('textarea').value;
+    let url = 'https://geekhub-frontend-js-9.herokuapp.com/api/threads/messages';
+    // let idThread = localStorage.getItem('_id');
+    // console.log (idThread)
+    let token = localStorage.getItem('token');
     let dataRaw = {
         "thread": {
-            "_id": localStorage._id,
+            "_id": '5e1a1c818ec2f49ab3e59ab2'
         },
         "message": {
             "body": message
@@ -19,8 +21,9 @@ async function sendMessage(e) {
             method: 'POST',
             body: JSON.stringify(dataRaw),
             headers: {
-                'Authorization': localStorage.token,
+                'x-access-token': localStorage.token,
                 'Content-Type': 'application/json'
+
             }
         });
         console.log(localStorage.token);
@@ -30,10 +33,10 @@ async function sendMessage(e) {
         if (!response.ok) {
             throw new Error(`No connection ${url}, status: ${response.status}`);
         }
+        // let idThread = result.thread
+        // localStorage.setItem('thread', idThread);
+        // console.log(idThread)
         cloudMyMessage(message);
-        let idThread = result.thread
-        localStorage.setItem('_id', idThread);
-        console.log(idThread)
 
     } catch (error) {
         console.error('Error:', error);
