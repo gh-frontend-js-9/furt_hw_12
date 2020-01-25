@@ -1,0 +1,52 @@
+.button{
+  @include text-styles ($lg-font-size, $white-color);
+    border: 1px solid #2196f3;
+    border-radius: 30px;
+    background-color: $dark-gray-color;
+    &--hovered:hover {
+      background-color:$blue-color;
+    }
+    &__icon{
+      color:$blue-color;
+    }
+}
+.nav-bar__button{
+  padding: 15px 24px;
+}
+.form-block__button{
+  padding: 10px 14px;
+}
+.threadsContainer__button-new-converse{
+  margin: 16px;
+}
+.button-new-converse{
+  @include text-styles ($lg-font-size, $white-color);
+  background-color: $blue-color;
+  border: 0px;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  &--hovered:hover{
+    background-color: $cornflowerblue-color;
+    cursor: pointer;
+  }
+}
+@media (max-width: 620px) {
+  .button-new-converse{
+    padding: 0px;
+    font-size: $sm-font-size;
+  }
+}
+.button-close{
+  @include text-styles ($lg-font-size, $white-color);
+  background-color: $light-gray-color;
+  border: none;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 1%;
+  right: 0%;
+  cursor: pointer;
+}

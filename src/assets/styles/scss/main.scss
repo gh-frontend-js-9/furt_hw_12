@@ -1,12 +1,15 @@
 @charset 'UTF-8';
 
-@import "abstracts/reset";
+@import "messages/abstracts/reset";
 
-@import 'abstracts/variables';
-@import 'abstracts/mixins';
+@import 'messages/abstracts/variables';
+@import 'messages/abstracts/mixins';
 
-@import 'layout/header';
-@import 'layout/sections';
-@import 'layout/nav';
+@import 'messages/layout/header';
+@import 'messages/layout/sections';
+@import 'messages/layout/nav';
 
-@import 'components/buttons';
+@import 'messages/components/buttons';
+@import 'messages/components/modal';
+
+@import 'authorization/main';
