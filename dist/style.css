@@ -247,7 +247,7 @@ input[type="radio"] {
  * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
  *    (include `-moz` to future-proof).
  */
-input[type="search"] {
+input[type=search] {
   -webkit-appearance: textfield;
   /* 1 */
   -moz-box-sizing: content-box;
@@ -315,7 +315,6 @@ textarea {
   resize: vertical; }
 
 .header-section {
-  height: 10%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -333,7 +332,21 @@ textarea {
 .fa {
   color: #ffffff; }
 
-.body {
+html ::-webkit-scrollbar {
+  width: 6px; }
+
+html ::-webkit-scrollbar:horizontal {
+  height: 4px; }
+
+html ::-webkit-scrollbar-track-piece {
+  background: #2b2d3c; }
+
+html ::-webkit-scrollbar-thumb {
+  background: #9ca1b2;
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
+
+.messenger-body {
   max-width: 1900px;
   width: 100%;
   max-height: 100%; }
@@ -389,14 +402,23 @@ textarea {
   flex-direction: row; }
 
 .conversation-column {
-  background-color: #2b2d3c; }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30%;
+  max-height: 800px;
+  background-color: #2b2d3c;
+  overflow: scroll; }
 
 @media (max-width: 390px) {
   .conversation-column {
     display: none; } }
 
 .user {
-  padding: 20px; }
+  padding: 20px;
+  cursor: pointer; }
+  .user--hovered:hover {
+    background-color: #404359; }
   .user__name {
     font-size: 22px;
     color: #ffffff;
@@ -412,6 +434,9 @@ textarea {
     font-size: 16px;
     color: #9ca1b2;
     font-family: "Montserrat", sans-serif; }
+  .user__anchor-thread {
+    display: block;
+    text-decoration: none; }
 
 @media (max-width: 930px) {
   .user__img-name-date {
@@ -435,7 +460,7 @@ textarea {
   width: 50%;
   display: flex;
   flex-direction: column-reverse;
-  max-height: 900px;
+  max-height: 800px;
   overflow-y: scroll;
   background-color: #2f3242; }
   .dialog-column__my-message {
@@ -444,28 +469,40 @@ textarea {
     display: flex;
     align-items: center; }
 
-.my-message {
+@media (max-width: 900px) {
+  .dialog-column {
+    width: 65%; } }
+
+.not-my-mess {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end; }
+
+.my-mess {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
   justify-content: flex-end; }
-  .my-message__img {
-    padding: 15px; }
-  .my-message__time {
-    font-size: 14px;
-    color: #9ca1b2;
-    font-family: "Montserrat", sans-serif;
-    text-align: right;
-    padding: 10px; }
-  .my-message__cloud {
-    font-size: 16px;
-    color: #ffffff;
-    font-family: "Montserrat", sans-serif;
-    padding: 10px;
-    background-color: #2196f3;
-    border-radius: 10px 10px 0px 10px; }
 
-.form-block__textarea {
+.my-message__img {
+  padding: 15px; }
+
+.my-message__time {
+  font-size: 14px;
+  color: #9ca1b2;
+  font-family: "Montserrat", sans-serif;
+  text-align: right;
+  padding: 10px; }
+
+.my-message__cloud {
+  font-size: 16px;
+  color: #ffffff;
+  font-family: "Montserrat", sans-serif;
+  padding: 10px;
+  background-color: #2196f3;
+  border-radius: 10px 10px 0px 10px; }
+
+.form-block__textarea, .validation-input {
   font-size: 16px;
   color: #ffffff;
   font-family: "Montserrat", sans-serif;
@@ -474,25 +511,33 @@ textarea {
   border-radius: 10px;
   border: 1px solid rgba(156, 161, 178, 0.3);
   background-color: #404359;
-  width: 85%; }
+  width: 85%;
+  resize: none; }
 
 @media (max-width: 650px) {
-  .form-block__textarea {
+  .form-block__textarea, .validation-input {
     width: 60%; } }
 
 .form-block__button {
   margin-right: 5px; }
 
 .user-column-date {
+  width: 15%;
   padding: 20px 30px;
   background-color: #2b2d3c; }
+
+.user-column__message {
+  font-size: 16px;
+  color: #ffffff;
+  font-family: "Montserrat", sans-serif; }
 
 .date {
   display: flex;
   flex-direction: column;
   max-width: 300px;
   align-items: center;
-  text-align: center; }
+  text-align: center;
+  justify-content: center; }
   .date__user-img {
     padding-top: 30px; }
   .date__user-name {
@@ -575,3 +620,106 @@ textarea {
 
 .form-block__button {
   padding: 10px 14px; }
+
+.threadsContainer__button-new-converse {
+  margin: 16px; }
+
+.button-new-converse {
+  font-size: 18px;
+  color: #ffffff;
+  font-family: "Montserrat", sans-serif;
+  background-color: #2196f3;
+  border: 0px;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center; }
+  .button-new-converse--hovered:hover {
+    background-color: cornflowerblue;
+    cursor: pointer; }
+
+@media (max-width: 620px) {
+  .button-new-converse {
+    padding: 0px;
+    font-size: 14px; } }
+
+.button-close {
+  font-size: 18px;
+  color: #ffffff;
+  font-family: "Montserrat", sans-serif;
+  background-color: #404359;
+  border: none;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 1%;
+  right: 0%;
+  cursor: pointer; }
+
+.modal {
+  transition: opacity 0.1s ease-out, transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  max-width: 65%;
+  max-height: 73%;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  overflow: auto;
+  transform: translate(-50%, -50%);
+  background-color: #2196f3;
+  border-radius: 5px;
+  border: 1px solid #9ca1b2; }
+  .modal__content {
+    z-index: 9; }
+
+.modal-container__name {
+  padding: 0px; }
+
+.body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2f3242; }
+
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  .auth-container__title {
+    font-size: 40px;
+    color: #ffffff;
+    font-family: "Montserrat", sans-serif;
+    padding: 10px;
+    font-weight: 700; }
+
+.form-validation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px; }
+
+.validation-input {
+  margin: 10px;
+  width: 100%; }
+
+.validation-input:valid {
+  border: 1px solid rgba(156, 161, 178, 0.3); }
+
+.validation-input:invalid {
+  border: 1px solid #F31C2A; }
+
+.form-validation__button {
+  margin: 15px 5px;
+  padding: 7px 20px; }
+
+.auth-container__massage {
+  color: #F31C2A; }
+
+.auth-container__forgot-pass {
+  font-size: 16px;
+  color: #ffffff;
+  font-family: "Montserrat", sans-serif; }

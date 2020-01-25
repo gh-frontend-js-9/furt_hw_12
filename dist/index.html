@@ -1,49 +1,82 @@
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="../dist/style.css">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-        <title>VIRTUS</title>
-    </head>
-        <body id="body">
-            <header class="header-section">
-                <div class="logo">
-                    <img class="logo__image" height="29px" src="assets/images/logo.png">
-                </div>
-
-                <ul class="nav-bar">
-                    <li class="nav-bar__list">
-                        <button class="button button--hovered nav-bar__button">
-                             Add
-                            <i class="button__icon fa fa-plus" aria-hidden="true"></i>
-                        </button>
-                    </li>
-                    <li class="nav-bar__list">
-                        <a href="#">
-                            <i class="fa fa-search fa-lg" aria-hidden="true"></i>
-                        </a>
-                    </li>
-                    <li class="nav-bar__list">
-                        <a href="#">
-                            <i class="fa fa-bell-o fa-lg" aria-hidden="true"></i>
-                        </a>
-                    </li>
-
-                    <li class="nav-bar__list">
-                        <a href="#">
-                            <img src="assets/images/i.png">
-                            <i class="fa fa-angle-down" aria-hidden="true"></i>
-                        </a>
-                    </li>
-                </ul>
-            </header>
-
-            <div id="row-mess-options"></div>
-            <div id="row-section"></div>
-
-            <script src="../dist/main.js"></script>
-        </body>
-</html>
+Html Webpack Plugin:
+<pre>
+  Error: Child compilation failed:
+  Module build failed (from ./node_modules/html-webpack-plugin/lib/loader.js):
+  Error: ENOENT: no such file or directory, open 'C:\Users\Karina\Desktop\GeekHub\furt_hw_12\src\index.ht  ml':
+  Error: ENOENT: no such file or directory, open 'C:\Users\Karina\Desktop\GeekHub\furt_hw_12\src\index.ht  ml'
+  
+  - compiler.js:79 
+    [furt_hw_12]/[html-webpack-plugin]/lib/compiler.js:79:16
+  
+  - Compiler.js:343 
+    [furt_hw_12]/[webpack]/lib/Compiler.js:343:11
+  
+  - Compiler.js:681 
+    [furt_hw_12]/[webpack]/lib/Compiler.js:681:15
+  
+  
+  - Hook.js:154 AsyncSeriesHook.lazyCompileHook
+    [furt_hw_12]/[tapable]/lib/Hook.js:154:20
+  
+  - Compiler.js:678 
+    [furt_hw_12]/[webpack]/lib/Compiler.js:678:31
+  
+  
+  - Hook.js:154 AsyncSeriesHook.lazyCompileHook
+    [furt_hw_12]/[tapable]/lib/Hook.js:154:20
+  
+  - Compilation.js:1423 
+    [furt_hw_12]/[webpack]/lib/Compilation.js:1423:35
+  
+  
+  - Hook.js:154 AsyncSeriesHook.lazyCompileHook
+    [furt_hw_12]/[tapable]/lib/Hook.js:154:20
+  
+  - Compilation.js:1414 
+    [furt_hw_12]/[webpack]/lib/Compilation.js:1414:32
+  
+  
+  - Hook.js:154 AsyncSeriesHook.lazyCompileHook
+    [furt_hw_12]/[tapable]/lib/Hook.js:154:20
+  
+  - Compilation.js:1409 
+    [furt_hw_12]/[webpack]/lib/Compilation.js:1409:36
+  
+  
+  - Hook.js:154 AsyncSeriesHook.lazyCompileHook
+    [furt_hw_12]/[tapable]/lib/Hook.js:154:20
+  
+  - Compilation.js:1405 
+    [furt_hw_12]/[webpack]/lib/Compilation.js:1405:32
+  
+  
+  - Hook.js:154 AsyncSeriesHook.lazyCompileHook
+    [furt_hw_12]/[tapable]/lib/Hook.js:154:20
+  
+  - Compilation.js:1342 Compilation.seal
+    [furt_hw_12]/[webpack]/lib/Compilation.js:1342:27
+  
+  - Compiler.js:675 
+    [furt_hw_12]/[webpack]/lib/Compiler.js:675:18
+  
+  - Compilation.js:1261 
+    [furt_hw_12]/[webpack]/lib/Compilation.js:1261:4
+  
+  
+  - Hook.js:154 AsyncSeriesHook.lazyCompileHook
+    [furt_hw_12]/[tapable]/lib/Hook.js:154:20
+  
+  - Compilation.js:1253 Compilation.finish
+    [furt_hw_12]/[webpack]/lib/Compilation.js:1253:28
+  
+  - Compiler.js:672 
+    [furt_hw_12]/[webpack]/lib/Compiler.js:672:17
+  
+  
+  - Compilation.js:1185 
+    [furt_hw_12]/[webpack]/lib/Compilation.js:1185:12
+  
+  - Compilation.js:1097 
+    [furt_hw_12]/[webpack]/lib/Compilation.js:1097:9
+  
+</pre>
