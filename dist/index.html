@@ -1,82 +1,28 @@
-Html Webpack Plugin:
-<pre>
-  Error: Child compilation failed:
-  Module build failed (from ./node_modules/html-webpack-plugin/lib/loader.js):
-  Error: ENOENT: no such file or directory, open 'C:\Users\Karina\Desktop\GeekHub\furt_hw_12\src\index.ht  ml':
-  Error: ENOENT: no such file or directory, open 'C:\Users\Karina\Desktop\GeekHub\furt_hw_12\src\index.ht  ml'
-  
-  - compiler.js:79 
-    [furt_hw_12]/[html-webpack-plugin]/lib/compiler.js:79:16
-  
-  - Compiler.js:343 
-    [furt_hw_12]/[webpack]/lib/Compiler.js:343:11
-  
-  - Compiler.js:681 
-    [furt_hw_12]/[webpack]/lib/Compiler.js:681:15
-  
-  
-  - Hook.js:154 AsyncSeriesHook.lazyCompileHook
-    [furt_hw_12]/[tapable]/lib/Hook.js:154:20
-  
-  - Compiler.js:678 
-    [furt_hw_12]/[webpack]/lib/Compiler.js:678:31
-  
-  
-  - Hook.js:154 AsyncSeriesHook.lazyCompileHook
-    [furt_hw_12]/[tapable]/lib/Hook.js:154:20
-  
-  - Compilation.js:1423 
-    [furt_hw_12]/[webpack]/lib/Compilation.js:1423:35
-  
-  
-  - Hook.js:154 AsyncSeriesHook.lazyCompileHook
-    [furt_hw_12]/[tapable]/lib/Hook.js:154:20
-  
-  - Compilation.js:1414 
-    [furt_hw_12]/[webpack]/lib/Compilation.js:1414:32
-  
-  
-  - Hook.js:154 AsyncSeriesHook.lazyCompileHook
-    [furt_hw_12]/[tapable]/lib/Hook.js:154:20
-  
-  - Compilation.js:1409 
-    [furt_hw_12]/[webpack]/lib/Compilation.js:1409:36
-  
-  
-  - Hook.js:154 AsyncSeriesHook.lazyCompileHook
-    [furt_hw_12]/[tapable]/lib/Hook.js:154:20
-  
-  - Compilation.js:1405 
-    [furt_hw_12]/[webpack]/lib/Compilation.js:1405:32
-  
-  
-  - Hook.js:154 AsyncSeriesHook.lazyCompileHook
-    [furt_hw_12]/[tapable]/lib/Hook.js:154:20
-  
-  - Compilation.js:1342 Compilation.seal
-    [furt_hw_12]/[webpack]/lib/Compilation.js:1342:27
-  
-  - Compiler.js:675 
-    [furt_hw_12]/[webpack]/lib/Compiler.js:675:18
-  
-  - Compilation.js:1261 
-    [furt_hw_12]/[webpack]/lib/Compilation.js:1261:4
-  
-  
-  - Hook.js:154 AsyncSeriesHook.lazyCompileHook
-    [furt_hw_12]/[tapable]/lib/Hook.js:154:20
-  
-  - Compilation.js:1253 Compilation.finish
-    [furt_hw_12]/[webpack]/lib/Compilation.js:1253:28
-  
-  - Compiler.js:672 
-    [furt_hw_12]/[webpack]/lib/Compiler.js:672:17
-  
-  
-  - Compilation.js:1185 
-    [furt_hw_12]/[webpack]/lib/Compilation.js:1185:12
-  
-  - Compilation.js:1097 
-    [furt_hw_12]/[webpack]/lib/Compilation.js:1097:9
-  
-</pre>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Log-in</title>
+    <link rel="stylesheet" type="text/css" href="./dist/style.css">
+</head>
+    <body class="body">
+
+        <div class="auth-container">
+            <h2 class="auth-container__title">
+                Log in
+            </h2>
+
+            <form class='form-validation' novalidate id='form-validation'  method="post" name="formLogIn" >
+                <input id="email" class="validation-input"  type="email" name='email' placeholder="Email">
+                <input id="password" class="validation-input"   type="password" name='password' placeholder="Password">
+                <button class="button button--hovered form-validation__button" id="submit" type="submit">Log in</button>
+            </form>
+            <p id="massage" class="auth-container__massage"></p>
+
+            <p class="auth-container__forgot-pass" id="container">
+            </p>
+        </div>
+
+        <script  src="./src/assets/scripts/auth/login-login.js"></script>
+
+    </body>
+</html>
