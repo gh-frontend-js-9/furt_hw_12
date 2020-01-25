@@ -59,6 +59,7 @@ async function SendDateFormLogIn(e) {
             localStorage.setItem('token', token);
             console.log(localStorage);
             successfullyLogIn()
+            return window.location.replace('message.html')
         }
     } catch (error) {
         console.error('Error:', error);
