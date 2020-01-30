@@ -14,7 +14,7 @@ function sendRequestForCurrent() {
             let myId = user._id;
             localStorage.setItem('_id', myId);
             console.log(localStorage);
-            return window.location.replace('message.html')
+            // return window.location.replace('message.html')
             document.getElementById('container').innerHTML = 'Hi, ' + user.name;
         }).catch((error) =>{
             console.log('error')
@@ -74,3 +74,4 @@ function wrongPasswordMess(result) {
         document.getElementById('container').innerHTML = 'Wrong password';
     }
 }
+
