@@ -1,14 +1,14 @@
 function sendRequestForCurrent() {
-    let token = localStorage.getItem('token');
+     localStorage.getItem('token');
     if (localStorage.getItem('token')) {
         fetch('https://geekhub-frontend-js-9.herokuapp.com/api/users/', {
             method: 'GET',
             headers: {
                 'x-access-token': localStorage.token,
             }
-        }).then((res) => {
-            console.log(res)
-            return res.json();
+        }).then((response) => {
+            console.log(response);
+            return response.json();
         }).then((user) => {
             console.log(user)
             let myId = user._id
