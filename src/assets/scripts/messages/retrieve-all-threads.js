@@ -1,5 +1,6 @@
 import {getThreadMessages} from './retrieve-all-thread-messages';
-
+// import {sendRequestForCurrent} from '../auth/login-login';
+// sendRequestForCurrent();
 let conversationColumn = document.getElementById('threadsContainer');
 conversationColumn.classList.add('conversation-column');
 
@@ -7,16 +8,14 @@ let button = document.createElement('button');
 button.classList.add('button-new-converse', 'button-new-converse--hovered', 'threadsContainer__button-new-converse');
 button.innerHTML = '+ New conversation';
 button.id = 'newConverseButton';
-button.type = 'submit'
-button.name = 'submit'
+button.type = 'submit';
+button.name = 'submit';
 conversationColumn.appendChild(button)
 
 export async function getAllThreads() {
-    let token = localStorage.getItem('token');
-    let myId = localStorage.getItem('_id');
+     localStorage.getItem('token');
     if (localStorage.getItem('token')) {
         let url = 'https://geekhub-frontend-js-9.herokuapp.com/api/threads?sort=desc';
-        let thread
         try {
             const response = await fetch(url, {
                 method: 'GET',
@@ -25,8 +24,6 @@ export async function getAllThreads() {
                 }
             });
             let threads = await response.json();
-
-
 
             function renderThread(container, thread, startConversation) {
                 let renderThreadContainer = (name, date, messageText) => {
@@ -50,8 +47,8 @@ export async function getAllThreads() {
                     userMessDate.classList.add('user__mess-date');
                     userMessDate.innerHTML = date;
 
-                    let userImgNameMessDateFragment = document.createDocumentFragment()
-                    userImgNameMessDateFragment.appendChild(userImgNameDate)
+                    let userImgNameMessDateFragment = document.createDocumentFragment();
+                    userImgNameMessDateFragment.appendChild(userImgNameDate);
 
                     userImgNameDate.appendChild(userImg);
                     userImgNameDate.appendChild(userName);
@@ -61,14 +58,14 @@ export async function getAllThreads() {
                     userMessage.classList.add('user__message');
                     userMessage.innerHTML = messageText;
 
-                    let userMessageInfoСontainer = document.createDocumentFragment()
+                    let userMessageInfoСontainer = document.createDocumentFragment();
                     userMessageInfoСontainer.appendChild(threadElem);
-                    threadElem.appendChild(userImgNameMessDateFragment)
-                    threadElem.appendChild(userMessage)
+                    threadElem.appendChild(userImgNameMessDateFragment);
+                    threadElem.appendChild(userMessage);
 
                     conversationColumn.appendChild(userMessageInfoСontainer);
-                    conversationColumn.appendChild(button)
-                }
+                    conversationColumn.appendChild(button);
+                };
                 let renderNameDateThread = () => {
                     let date = thread.created_at.slice(0, 10);
                     let myId = localStorage.getItem('_id');
@@ -88,17 +85,17 @@ export async function getAllThreads() {
                         let name = thread.users[0].name;
                         return renderThreadContainer(name, date, lastMessage);
                     }
-                }
+                };
                 renderNameDateThread()
             }
 
             threads.forEach(function (thread, index, arr) {
                 renderThread(document.getElementById('threadsContainer'), thread, (event) => {
-                    var threadContainer = event.target.closest('[data-thread-id]');
+                    let threadContainer = event.target.closest('[data-thread-id]');
                     let threadId = threadContainer.getAttribute('data-thread-id');
 
                     threadContainer.style.backgroundColor = '#404359';
-                    cleanTextarea()
+                    cleanTextarea();
                     getThreadMessages(threadId)
 
                 })
@@ -112,9 +109,8 @@ export async function getAllThreads() {
         }
     }
 }
-
-getAllThreads()
+getAllThreads();
 
 let cleanTextarea = () => {
     document.getElementById('textarea').value = "";
-}
+};

@@ -47,9 +47,9 @@ async function getAllUsers() {
 
         allUsers.forEach(function (userElem, index, arr) {
             renderUsers(document.getElementById('modal__content'), userElem, (event) => {
-                var usersContainer = event.target.closest('[data-user-id]');
+                let usersContainer = event.target.closest('[data-user-id]');
                 let userIdThread = usersContainer.getAttribute('data-user-id');
-                console.log(userIdThread)
+                console.log(userIdThread);
                 startThread(userIdThread);
             })
         });

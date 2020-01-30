@@ -2,18 +2,18 @@ import {createDateСhosenUser} from './common.js';
 import {createdateUserInfo} from './common.js';
 
 export async function getUserById(userThread) {
-    let token = localStorage.getItem('token');
+    localStorage.getItem('token');
     let myId = localStorage.getItem('_id');
-    let userId
-    let id
+    let userId;
+    let id;
     userThread.forEach(function (elem) {
         userId = elem.user._id;
         if (userId !== myId) {
             id = userId;
         } else {
-            id != userId;
+            id !== userId;
         }
-    })
+    });
     let url = `https://geekhub-frontend-js-9.herokuapp.com/api/users/${id}`;
     try {
         const response = await fetch(url, {
@@ -25,7 +25,7 @@ export async function getUserById(userThread) {
         let userInfo = await response.json();
         if (response.status === 200 ){
             let userInfoColumn = document.getElementById('userInfoColumn')
-            userInfoColumn.innerHTML = ''
+            userInfoColumn.innerHTML = '';
             renderInfoUser(userInfo)
         }
         if (response.status === 500 ){
@@ -54,10 +54,10 @@ function renderInfoUser(userInfo) {
     createdateUserInfo('Organization', organization);
 }
 function messageIdUndefined() {
-    let userInfoColumn = document.getElementById('userInfoColumn')
-    userInfoColumn.innerHTML = ''
-    let message = document.createElement('p')
-    message.classList.add('user-column__message')
+    let userInfoColumn = document.getElementById('userInfoColumn');
+    userInfoColumn.innerHTML = '';
+    let message = document.createElement('p');
+    message.classList.add('user-column__message');
     message.innerHTML = 'You do not have access to this user information until you have a dialog with him.'
-    userInfoColumn.appendChild(message)
+    userInfoColumn.appendChild(message);
 }

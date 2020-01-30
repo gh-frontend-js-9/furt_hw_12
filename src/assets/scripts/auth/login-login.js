@@ -1,5 +1,5 @@
 function sendRequestForCurrent() {
-     localStorage.getItem('token');
+    localStorage.getItem('token');
     if (localStorage.getItem('token')) {
         fetch('https://geekhub-frontend-js-9.herokuapp.com/api/users/', {
             method: 'GET',
@@ -10,14 +10,15 @@ function sendRequestForCurrent() {
             console.log(response);
             return response.json();
         }).then((user) => {
-            console.log(user)
-            let myId = user._id
-            localStorage.setItem('_id', myId)
-            console.log(localStorage)
+            console.log(user);
+            let myId = user._id;
+            localStorage.setItem('_id', myId);
+            console.log(localStorage);
+            return window.location.replace('message.html')
             document.getElementById('container').innerHTML = 'Hi, ' + user.name;
         }).catch((error) =>{
             console.log('error')
-        })
+        });
         console.log(localStorage.token)
     } else {
         document.getElementById('container').innerHTML = 'Login, please'
@@ -29,7 +30,6 @@ function setOnClickHandlerByElemId(elemId, callback) {
     let button = document.getElementById(elemId);
     button.addEventListener('click', SendDateFormLogIn)
 }
-
 setOnClickHandlerByElemId('submit', SendDateFormLogIn)
 
 async function SendDateFormLogIn(e) {
@@ -41,7 +41,7 @@ async function SendDateFormLogIn(e) {
     let user = {
         "password": password,
         "email": email
-    }
+    };
     try {
         const response = await fetch(url, {
             method: 'POST',
@@ -53,12 +53,12 @@ async function SendDateFormLogIn(e) {
         let result = await response.json();
         console.log(localStorage.token);
         if (!response.ok) {
-            wrongPasswordMess(result)
+            wrongPasswordMess(result);
         } else {
             let token =  response.headers.get('X-Auth-Token');
             localStorage.setItem('token', token);
             console.log(localStorage);
-            successfullyLogIn()
+            successfullyLogIn();
             return window.location.replace('message.html')
         }
     } catch (error) {

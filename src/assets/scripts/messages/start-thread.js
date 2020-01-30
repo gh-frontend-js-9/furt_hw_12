@@ -1,13 +1,11 @@
-import {getAllThreads} from './retrieve-all-threads';
-
 export async function startThread(userIdThread) {
-    let token = localStorage.getItem('token');
+    localStorage.getItem('token');
     let url = 'https://geekhub-frontend-js-9.herokuapp.com/api/threads';
     let dataRaw = {
         "user": {
             "_id": userIdThread,
         }
-    }
+    };
     try {
         const response = await fetch(url, {
             method: 'POST',
@@ -17,7 +15,7 @@ export async function startThread(userIdThread) {
                 'Content-Type': 'application/json'
             }
         });
-        console.log(dataRaw)
+        console.log(dataRaw);
 
         let result = await response.json();
         if (!response.ok) {

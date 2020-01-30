@@ -1,6 +1,3 @@
-import {createDataAtr} from './retrieve-all-threads';
-import {getAllThreads} from './retrieve-all-threads';
-
 let body = document.getElementById('body');
 body.classList.add('messenger-body');
 let rowSection = document.getElementById('row-section');
@@ -44,7 +41,6 @@ function createSelect() {
 
     return rowMessOptions.appendChild(optSelectBlock).appendChild(optFilterMess);
 }
-
 createSelect();
 
 //////////// navColumn
@@ -76,7 +72,6 @@ dialogColumnBlock.classList.add('dialog-column__block');
 dialogColumnBlock.id = 'dialogColumnBlock'
 
 export function cloudMyMessage(message, date, classMess) {
-    // dialogColumnBlock.innerHTML = ''
     let myMessage = document.createElement('div');
     myMessage.classList.add('my-message', 'dialog-column__my-message', classMess);
     let myMessageContainer = document.createElement('div');

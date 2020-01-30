@@ -10,7 +10,10 @@ export async function getThreadMessages(threadId) {
     threadIdSendMess = threadId;
     let token = localStorage.getItem('token');
     console.log(token);
-    let url = `https://geekhub-frontend-js-9.herokuapp.com/api/threads/messages/${threadId}?sort=desc`;
+    const URL =`https://geekhub-frontend-js-9.herokuapp.com`;
+    let url = URL + `/api/threads/messages/${threadId}?sort=desc`;
+    console.log(url)
+    // let url = `https://geekhub-frontend-js-9.herokuapp.com/api/threads/messages/${threadId}?sort=desc`;
     try {
         const response = await fetch(url, {
             method: 'GET',
@@ -19,7 +22,7 @@ export async function getThreadMessages(threadId) {
             }
         });
         userThread = await response.json();
-        console.log(userThread)
+        console.log(userThread);
 
         renderThreadMessage(userThread);
         getUserById(userThread);
@@ -37,7 +40,7 @@ function renderThreadMessage(userThread) {
         date = elem.created_at.slice(11, 16);
         let message = elem.body;
         let myId = localStorage.getItem('_id');
-        console.log(myId)
+        console.log(myId);
         if (elem.user._id == myId) {
             cloudMyMessage(message, date, 'my-mess');
         } else {
