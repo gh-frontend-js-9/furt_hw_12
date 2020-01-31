@@ -1,0 +1,22 @@
+.modal {
+  transition: opacity 0.1s ease-out, transform .4s cubic-bezier(0.23, 1, 0.32, 1);
+  max-width: 65%;
+  max-height: 73%;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  overflow: auto;
+  transform: translate(-50%, -50%);
+  background-color: $blue-color;
+  border-radius: 5px;
+  border:1px solid $lighter-gray-color;
+  &__content{
+    z-index: 9;
+  }
+}
+.modal-container__name{
+  padding: 0px;
+}

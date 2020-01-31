@@ -1,0 +1,15 @@
+@charset 'UTF-8';
+
+@import "messages/abstracts/reset";
+
+@import 'messages/abstracts/variables';
+@import 'messages/abstracts/mixins';
+
+@import 'messages/layout/header';
+@import 'messages/layout/sections';
+@import 'messages/layout/nav';
+
+@import 'messages/components/buttons';
+@import 'messages/components/modal';
+
+@import 'authorization/main';
